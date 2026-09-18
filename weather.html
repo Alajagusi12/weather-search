@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather • Results</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body id="body">
+
+  <div class="app">
+    <header class="result-header">
+      <a href="index.html" class="back-btn">
+        ← Back
+      </a>
+      <button id="unitToggle" class="unit-toggle">°C</button>
+    </header>
+
+    <main class="card result-card">
+      <!-- Loading -->
+      <div id="loadingState" class="state">
+        <div class="spinner"></div>
+        <p>Loading weather...</p>
+      </div>
+
+      <!-- Error -->
+      <div id="errorState" class="state error hidden"></div>
+
+      <!-- Weather Result -->
+      <div id="weatherResult" class="weather-result hidden">
+        <div class="location-row">
+          <p class="city-name" id="cityName"></p>
+          <span class="live-badge">Live</span>
+        </div>
+
+        <div class="main-reading">
+          <span class="weather-emoji" id="weatherEmoji"></span>
+          <div class="temp-block">
+            <span class="temperature" id="temperature"></span>
+            <p class="condition" id="condition"></p>
+          </div>
+        </div>
+
+        <div class="details">
+          <div class="detail">
+            <span class="detail-icon">🌡️</span>
+            <div>
+              <span class="detail-label">Feels like</span>
+              <span class="detail-value" id="feelsLike"></span>
+            </div>
+          </div>
+          <div class="detail">
+            <span class="detail-icon">💧</span>
+            <div>
+              <span class="detail-label">Humidity</span>
+              <span class="detail-value" id="humidity"></span>
+            </div>
+          </div>
+          <div class="detail">
+            <span class="detail-icon">💨</span>
+            <div>
+              <span class="detail-label">Wind</span>
+              <span class="detail-value" id="wind"></span>
+            </div>
+          </div>
+          <div class="detail">
+            <span class="detail-icon">🌇</span>
+            <div>
+              <span class="detail-label">Sunset</span>
+              <span class="detail-value" id="sunset"></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="forecast-section">
+          <h3 class="forecast-title">5-Day Forecast</h3>
+          <div class="forecast" id="forecast"></div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="page-footer">
+      <span>By Teslim Abdulwahab</span>
+      <span class="dot">•</span>
+      <span>Powered by OpenWeatherMap</span>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
