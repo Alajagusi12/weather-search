@@ -1,0 +1,4 @@
+window.WEATHER_CONFIG = {
+  API_KEY: "c2d381892ef6d498e5103b51dbd34547",
+  PROXY_URL: ""
+};

@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Skycast forecast: current conditions, hourly outlook, 5-day forecast, air quality and sun times." />
+  <title>Forecast · Skycast</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body data-sky="clear-d">
+  <canvas id="fx" aria-hidden="true"></canvas>
+  <div class="app">
+    <header class="top">
+      <a class="brand" href="index.html"><span class="logo" aria-hidden="true">◐</span> Skycast</a>
+      <div class="top-r">
+        <a class="btn nav" href="index.html">← Home</a>
+        <div class="seg" role="group" aria-label="Units">
+          <button id="unitC" type="button" aria-pressed="true">°C</button>
+          <button id="unitF" type="button" aria-pressed="false">°F</button>
+        </div>
+      </div>
+    </header>
+    <form id="searchForm" class="search" autocomplete="off" role="search">
+      <div class="field">
+        <span class="mag" aria-hidden="true">⌕</span>
+        <input id="cityInput" type="text" placeholder="Search a city…  (press / to focus)" aria-label="Search city" aria-autocomplete="list" aria-controls="sugList" />
+        <ul id="sugList" class="sug" role="listbox" hidden></ul>
+      </div>
+      <button type="submit" class="btn primary">Search</button>
+      <button type="button" id="locBtn" class="btn" title="Use my location" aria-label="Use my location">◎</button>
+    </form>
+    <div class="chips" id="chips"></div>
+
+    <main>
+      <section id="loading" class="stack" aria-busy="true">
+        <div class="card sk h1"></div><div class="card sk h2"></div><div class="card sk h2"></div>
+      </section>
+
+      <section id="error" class="card center" role="alert" hidden>
+        <div class="big">⚠️</div>
+        <p id="errText"></p>
+        <div class="row"><button id="retryBtn" class="btn primary" type="button">Try again</button><a class="btn" href="index.html">Back home</a></div>
+      </section>
+
+      <div id="result" class="stack" hidden>
+        <section class="card now">
+          <div class="now-l">
+            <div class="row">
+              <h1 id="cityName"></h1>
+              <button id="favBtn" class="icon" type="button" aria-pressed="false" aria-label="Save location" title="Save location">☆</button>
+            </div>
+            <p class="muted"><span id="localDate"></span> · <span id="localTime"></span> local time</p>
+            <div class="temp-row"><span id="emoji" class="emoji" aria-hidden="true"></span><span id="temp" class="temp"></span></div>
+            <p id="condition" class="cond"></p>
+            <p class="muted" id="hiLo"></p>
+          </div>
+          <p id="summary" class="summary"></p>
+        </section>
+
+        <section class="card">
+          <h2>Next 24 hours</h2>
+          <div id="chart" class="chart"></div>
+          <p class="legend"><i class="k1"></i>Temperature<i class="k2"></i>Chance of rain</p>
+          <div id="hourly" class="hourly"></div>
+        </section>
+
+        <div class="grid">
+          <section class="card"><h2>Conditions</h2><div id="details" class="tiles"></div></section>
+          <section class="card"><h2>5-day forecast</h2><div id="daily" class="daily"></div></section>
+        </div>
+
+        <div class="grid">
+          <section class="card"><h2>Sun</h2><div id="sun" class="sun"></div></section>
+          <section class="card"><h2>Air quality</h2><div id="air"></div></section>
+        </div>
+      </div>
+    </main>
+
+    <footer class="foot">
+      <p>Weather data by <a href="https://openweathermap.org" target="_blank" rel="noopener">OpenWeather</a></p>
+      <p>© 2026 · Developed by Abdulwahab Teslim</p>
+    </footer>
+  </div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="./config.js"></script>
+  <script src="./core.js"></script>
+  <script src="./weather.js"></script>
+</body>
+</html>
